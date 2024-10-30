@@ -22,6 +22,8 @@ def xss():
     regex = re.compile(query, re.IGNORECASE)
     results = [person for person in people if regex.search(person['name'])]
 
+    query = query.replace("<", "&lt;").replace(">", "&gt;")
+
     return jsonify({"query": query, "results": results})
 
 
