@@ -22,4 +22,5 @@ def test_functionality(client):
     response = client.get('/xss?q=alice')
     assert response.status_code == 200
     assert response.get_json()["results"] == [{"name": "Alice Johnson", "age": 30}]
+    assert response.get_json()["query"]
 
